@@ -1,0 +1,23 @@
+{
+    "name": "silverbackstudio/wp-log",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Brando Meniconi",
+            "email": "b.meniconi@silverbackstudio.it"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Svbk\\WP\\Log\\": "src/"}
+    },   
+    "require": {
+        "psr/log": "^1.0.2",
+        "google/cloud-logging": "^1.11"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "wp-coding-standards/wpcs": "^0.13.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.2",
+        "wimg/php-compatibility": "^8.0"        
+    }
+}
