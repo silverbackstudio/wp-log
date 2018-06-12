@@ -1,6 +1,6 @@
 {
     "name": "silverbackstudio/wp-log",
-    "type": "library",
+    "type": "wordpress-muplugin",
     "authors": [
         {
             "name": "Brando Meniconi",
@@ -12,6 +12,7 @@
     },   
     "require": {
         "psr/log": "^1.0.2",
+        "monolog/monolog": "^1.23",
         "google/cloud-logging": "^1.11"
     },
     "require-dev": {
