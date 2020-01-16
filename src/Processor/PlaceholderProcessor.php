@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * This file is part of the Monolog package.
  *
@@ -15,34 +15,33 @@ namespace Svbk\WP\Log\Processor;
  *
  * @author Jordi Boggiano <j.boggiano@seld.be>
  */
-class PlaceholderProcessor extends \Monolog\Processor\PsrLogMessageProcessor
-{
-    /**
-     * @param  array $record
-     * @return array
-     */
-    public function __invoke(array $record)
-    {
-        
-        if (false === strpos($record['message'], '{')) {
-            return $record;
-        }        
-        
-        $record = parent::__invoke( $record );
+class PlaceholderProcessor extends \Monolog\Processor\PsrLogMessageProcessor {
 
-        $replacements = array();
-        foreach ($record['extra'] as $key => $val) {
-            if (is_null($val) || is_scalar($val) || (is_object($val) && method_exists($val, "__toString"))) {
-                $replacements['{'.$key.'}'] = $val;
-            } elseif (is_object($val)) {
-                $replacements['{'.$key.'}'] = '[object '.get_class($val).']';
-            } else {
-                $replacements['{'.$key.'}'] = '['.gettype($val).']';
-            }
-        }
+	/**
+	 * @param  array $record
+	 * @return array
+	 */
+	public function __invoke( array $record ) {
 
-        $record['message'] = strtr($record['message'], $replacements);
+		if ( false === strpos( $record['message'], '{' ) ) {
+			return $record;
+		}
 
-        return $record;
-    }
+		$record = parent::__invoke( $record );
+
+		$replacements = array();
+		foreach ( $record['extra'] as $key => $val ) {
+			if ( is_null( $val ) || is_scalar( $val ) || (is_object( $val ) && method_exists( $val, '__toString' )) ) {
+				$replacements[ '{' . $key . '}' ] = $val;
+			} elseif ( is_object( $val ) ) {
+				$replacements[ '{' . $key . '}' ] = '[object ' . get_class( $val ) . ']';
+			} else {
+				$replacements[ '{' . $key . '}' ] = '[' . gettype( $val ) . ']';
+			}
+		}
+
+		$record['message'] = strtr( $record['message'], $replacements );
+
+		return $record;
+	}
 }

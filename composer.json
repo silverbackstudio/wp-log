@@ -20,5 +20,11 @@
         "wp-coding-standards/wpcs": "^0.13.1",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.2",
         "wimg/php-compatibility": "^8.0"        
+    },
+    "scripts": {
+        "beautify": [
+            "./vendor/bin/phpcbf --standard=./phpcs.xml src plugin.php"
+        ]
     }
+
 }
