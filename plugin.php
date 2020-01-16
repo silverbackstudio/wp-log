@@ -61,6 +61,7 @@ function svbk_logger_register_hooks() {
             'core' => WP_Log\Hook\Core::class,
             'user' => WP_Log\Hook\User::class,
             'post' => WP_Log\Hook\Post::class,
+            'http' => WP_Log\Hook\Http::class,
         )
     );
         
