@@ -31,7 +31,10 @@ class WordpressProcessor {
 
 		$record['context']['siteurl'] = get_site_url();
 		$record['context']['site_id'] = get_current_blog_id();
-		$record['context']['host'] = $_SERVER['HTTP_HOST'];
+		
+		if ( !empty($_SERVER['HTTP_HOST']) ){
+			$record['context']['host'] = $_SERVER['HTTP_HOST'];
+		}
 
 		if ( is_user_logged_in() ) {
 			$user = wp_get_current_user();
